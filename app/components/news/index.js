@@ -4,11 +4,11 @@ import {
   View,
   Text
 } from 'react-native';
-class NewsComponent extends Component {
+class News extends Component {
   render() {
 
     return (
-      <View style={styles.container}>
+      <View>
         <Text>News component</Text>
       </View>
     )
@@ -22,4 +22,4 @@ class NewsComponent extends Component {
 //   }
 // })
 
-export default NewsComponent
+export default News

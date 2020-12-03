@@ -4,11 +4,11 @@ import {
   View,
   Text
 } from 'react-native';
-class GamesComponent extends Component {
+class Games extends Component {
   render() {
 
     return (
-      <View style={styles.container}>
+      <View>
         <Text>Games component</Text>
       </View>
     )
@@ -22,4 +22,4 @@ class GamesComponent extends Component {
 //   }
 // })
 
-export default GamesComponent
+export default Games

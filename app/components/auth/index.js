@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import {
+  Button,
   StyleSheet,
   View,
   Text
 } from 'react-native';
-class AuthComponent extends Component {
+class SignIn extends Component {
   render() {
 
     return (
-      <View style={styles.container}>
+      <View>
         <Text>Auth component</Text>
       </View>
     )
@@ -22,4 +23,4 @@ class AuthComponent extends Component {
 //   }
 // })
 
-export default AuthComponent
+export default SignIn
