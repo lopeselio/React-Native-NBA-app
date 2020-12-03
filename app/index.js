@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import {
-  Platform,
   StyleSheet,
-  View,
-  Text
+  View
 } from 'react-native';
+import { RootNavigator } from './routes'
 
 // import {
 //   Header,
@@ -14,11 +13,13 @@ import {
 //   ReloadInstructions,
 // } from 'react-native/Libraries/NewAppScreen';
 
-export default class App extends Component {
+class App extends Component {
   render() {
+  const Nav = RootNavigator()
+
     return (
       <View style={styles.container}>
-        <Text>Welcome to react Native</Text>
+        <Nav />
       </View>
     )
   }
@@ -27,8 +28,8 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#f5fcff'
+    backgroundColor: '#fff'
   }
 })
+
+export default App
