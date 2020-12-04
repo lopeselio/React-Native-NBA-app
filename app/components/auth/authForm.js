@@ -37,6 +37,18 @@ class AuthForm extends Component {
             }
         }
     }
+    
+    updateInput = (name, value) => {
+        this.setState({
+            hasErrors: false
+        })
+        let formCopy = this.state.form
+        formCopy[name].value = value
+        this.setState({
+            form: formCopy
+        })
+    }
+
     render(){
         return(
             <View>
@@ -47,6 +59,15 @@ class AuthForm extends Component {
                     value={this.state.form.email.value}
                     autoCapitalize={"none"}
                     keyboardType={"email-address"}
+                    onChangeText={value => this.updateInput("email", value)}
+                />
+                <Input 
+                    placeholder='Enter password'
+                    placeholderTextColor='#cecece'
+                    type={this.state.form.password.type}
+                    value={this.state.form.password.value}
+                    onChangeText={value => this.updateInput("password", value)}
+                    secureTextEntry
                 />
             </View>
         )
