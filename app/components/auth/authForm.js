@@ -84,6 +84,35 @@ class AuthForm extends Component {
     )
 
     submitUser = () => {
+        let isFormValid = true
+        let formToSubmit = {}
+        const formCopy = this.state.form 
+        for(let key in formCopy){
+            // LOGIN
+            if(this.state.type === 'Login'){
+                if(key !== 'confirmPassword'){
+                    isFormValid = isFormValid && formCopy[key].valid
+                    formToSubmit[key] = formCopy[key].value
+                }
+            }else{
+                // REGISTER 
+                isFormValid = isFormValid && formCopy[key].valid
+                formToSubmit[key] = formCopy[key].value
+
+            }
+
+        }
+        if(isFormValid){
+            if(this.state.type === 'Login'){
+                
+            i
+
+            }else{
+                this.setState({
+                    hasErrors: true
+                })
+            }
+        }
 
     }
 
