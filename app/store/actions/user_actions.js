@@ -17,6 +17,7 @@ export function signUp(data){
         }
     }).then(response =>{
         return response.data
+        // console.log(response.data)
     }).catch( e => {
         return false
     })

@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import LogoComponent from './authLogo'
 import AuthForm from './authForm'
+import { getTokens, setTokens } from '../../utils/misc'
 
 class SignIn extends Component {
   
@@ -18,6 +19,13 @@ class SignIn extends Component {
   goNext = () => {
     this.props.navigation.navigate('App')
   }
+  
+  componentDidMount() {
+    getTokens((value) => {
+      console.log(value)
+    })
+  }
+
   render() {
       if(this.state.loading){
           return(
