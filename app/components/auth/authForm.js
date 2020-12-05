@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Image, Text } from 'react-native'
+import { View, Image, Text, StyleSheet, Button, Platform } from 'react-native'
 import Input from '../../utils/forms/input'
 
 class AuthForm extends Component {
@@ -37,7 +37,24 @@ class AuthForm extends Component {
             }
         }
     }
+
+    changeFormType= () => {
+        const type = this.state.type
+        this.setState({
+            type: type === 'Login' ? 'Register':'Login',
+            action: type === 'Login' ? 'Register' : 'Login',
+            actionMode: type === 'Login' ? ' I want to Login' : 'I want to register'
+        })
+    }
     
+    formHasErrors = () => (
+        this.state.hasErrors ? 
+            <View style={ styles.errorContainer}>
+                <Text style={ styles.errorLabel}>Oops, please check your info!</Text>
+            </View>
+        : null
+    )
+
     updateInput = (name, value) => {
         this.setState({
             hasErrors: false
@@ -47,6 +64,23 @@ class AuthForm extends Component {
         this.setState({
             form: formCopy
         })
+    }
+
+    confirmPassword = () => (
+        this.state.type != 'Login' ?
+            <Input 
+                placeholder='Confirm your password'
+                placeholderTextColor='#cecece'
+                type={this.state.form.confirmPassword.type}
+                value={this.state.form.confirmPassword.value}
+                onChangeText={value => this.updateInput("confirmPassword", value)}
+                secureTextEntry
+            />
+            : null
+    )
+
+    submitUser = () => {
+
     }
 
     render(){
@@ -69,10 +103,60 @@ class AuthForm extends Component {
                     onChangeText={value => this.updateInput("password", value)}
                     secureTextEntry
                 />
+                {this.confirmPassword()}
+                {this.formHasErrors()}
+
+                <View style={{ marginTop: 20 }}>
+                    <View style={styles.button}>
+                        <Button 
+                            title={this.state.action}
+                            onPress={this.submitUser}
+                        />
+                    </View>
+                    <View style={styles.button}>
+                        <Button 
+                            title={this.state.actionMode}
+                            onPress={this.changeFormType}
+                        />
+                    </View>
+                    <View style={styles.button}>
+                        <Button 
+                            title="I'll do it later"
+                            onPress={() => this.props.goNext()}
+                        />
+                    </View>
+                </View>
             </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    errorContainer: {
+        marginBottom: 10,
+        marginTop: 30,
+        padding: 10,
+        backgroundColor: '#f44336'
+    },
+    errorLabel: {
+        color: '#fff',
+        textAlign: 'center',
+        textAlignVertical: 'center'
+    },
+    button: {
+        ...Platform.select({
+            ios:{
+                marginBottom: 0,
+            },
+            android:{
+                marginBottom: 10,
+                marginTop: 10
+            }
+        })
+        // marginBottom: 10,
+        // marginTop: 10
+    }
+})
 
 export default AuthForm
 
