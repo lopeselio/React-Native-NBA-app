@@ -121,11 +121,11 @@ class AuthForm extends Component {
         if(isFormValid){
             if(this.state.type === 'Login'){
                 this.props.signIn(formToSubmit).then(() => {
-                    this.manageAcces()
+                    this.manageAccess()
                 })
             }else{
                 this.props.signUp(formToSubmit).then(()=>{
-                    this.manageAcces()
+                    this.manageAccess()
                 })
 
             }
