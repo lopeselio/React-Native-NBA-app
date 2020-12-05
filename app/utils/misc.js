@@ -8,10 +8,10 @@ export const REFRESH = `https://securetoken.googleapis.com/v1/token?key=${APIKEY
 export const getTokens = (cb) => {
 
     AsyncStorage.multiGet([
-        '@nba_app@token',
-        '@nba_app@refreshToken',
-        '@nba_app@expireToken',
-        '@nba_app@uid'
+        '@NBA_App@token',
+        '@NBA_App@refreshToken',
+        '@NBA_App@expireToken',
+        '@NBA_App@uid'
     ]).then( value => {
         
         cb(value);
@@ -24,10 +24,10 @@ export const setTokens = (values,cb) => {
     const expiration = dateNow.getTime() + (3600 * 1000);
  
     AsyncStorage.multiSet([
-        ['@nba_app@token',values.token],
-        ['@nba_app@refreshToken',values.refToken],
-        ['@nba_app@expireToken',expiration.toString()],
-        ['@nba_app@uid',values.uid]
+        ['@NBA_App@token',values.token],
+        ['@NBA_App@refreshToken',values.refToken],
+        ['@NBA_App@expireToken',expiration.toString()],
+        ['@NBA_App@uid',values.uid]
     ]).then( response => {
         cb();
     });
