@@ -3,7 +3,7 @@ const validation = (value, rules, form) => {
     for(let rule in rules){
         switch(rule){
             case "isRequired":
-                valid = valid && validateRequired(value)
+                valid = valid && validationRequired(value)
                 break
             case "isEmail":
                 valid = valid && validateEmail(value)
@@ -33,7 +33,7 @@ const validationRequired = value => {
 }
 
 const validateEmail = email => {
-    const expression = /^(([^<>()[]\.,;:s@"]+(.[^<>()[]\.,;:s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/igm;
+    const expression = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return expression.test(String(email).toLocaleLowerCase())    
 }
 
