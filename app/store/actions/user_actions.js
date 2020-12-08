@@ -1,53 +1,61 @@
-import axios from 'axios'
-import { SIGN_IN, SIGN_UP, AUTO_SIGN_IN } from '../types'
-// import axios from 'axios'
-import { SIGNUP, SIGNIN, FIREBASEURL, REFRESH } from '../../utils/misc'
+import {
+    SIGN_UP,
+    SIGN_IN,
+    AUTO_SIGN_IN
+} from '../types';
+
+import axios from 'axios';
+import { SIGNUP,SIGNIN,FIREBASEURL,REFRESH } from '../../utils/misc';
 
 export function signUp(data){
+
     const request = axios({
-        method: 'POST',
-        url: SIGNUP,
-        data: {
-            email: data.email,
-            password: data.password,
-            returnSecureToken: true
+        method:'POST',
+        url:SIGNUP,
+        data:{
+            email:data.email,
+            password:data.password,
+            returnSecureToken:true
         },
         header:{
-            "Content-Type": "application/json"
+            "Content-Type":"application/json"
         }
-    }).then(response =>{
+    }).then(response=>{
         return response.data
-        // console.log(response.data)
     }).catch( e => {
         return false
-    })
+    });
+
     return {
-        type: SIGN_UP,
-        payload: request
+        type:SIGN_UP,
+        payload:request
     }
 }
 
 
 export function signIn(data){
+
     const request = axios({
-        method: 'POST',
-        url: SIGNIN,
-        data: {
-            email: data.email,
-            password: data.password,
-            returnSecureToken: true
+        method:'POST',
+        url:SIGNIN,
+        data:{
+            email:data.email,
+            password:data.password,
+            returnSecureToken:true
         },
         header:{
-            "Content-Type": "application/json"
+            "Content-Type":"application/json"
         }
-    }).then(response =>{
+    }).then(response=>{
         return response.data
     }).catch( e => {
         return false
-    })
+    });
+
+
     return {
-        type: SIGN_IN,
-        payload: request
+        type:SIGN_IN,
+        payload:request
     }
 }
 

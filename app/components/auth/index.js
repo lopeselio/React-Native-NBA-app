@@ -1,24 +1,21 @@
-import React, {Component} from 'react'
-import {
-  ScrollView,
-  ActivityIndicator,
-  StyleSheet,
-  View,
-  Text
-} from 'react-native';
-import LogoComponent from './authLogo'
-import AuthForm from './authForm'
-import { getTokens, setTokens } from '../../utils/misc'
+import React, {Component} from 'react';
+import {StyleSheet, View, Text,ScrollView,ActivityIndicator} from 'react-native';
 
-import { connect } from 'react-redux'
-import { autoSignIn } from '../../store/actions/user_actions'
-import { bindActionCreators } from 'redux'
+import AuthLogo from './authLogo';
+import AuthForm from './authForm';
 
-class SignIn extends Component {
-  
+import { connect } from 'react-redux';
+import { autoSignIn } from '../../store/actions/user_actions';
+import { bindActionCreators } from 'redux';
+ 
+import { getTokens , setTokens } from '../../utils/misc';
+
+class AuthComponent extends Component {
+
   state = {
-      loading: false
-  }  
+    loading:true
+  }
+
 
   goNext = () => {
     this.props.navigation.navigate('App')
@@ -42,43 +39,44 @@ class SignIn extends Component {
     })
   }
 
-  render() {
-      if(this.state.loading){
-          return(
-            <View style={styles.loading}>
-                <ActivityIndicator />
-            </View>
-          )         
-      }else {
-        return (
-            <ScrollView style={styles.container}>
-              <View>
-                  <LogoComponent />
-                  <AuthForm 
-                    goNext={this.goNext}
-                  />
-              </View>
-            </ScrollView>
-          )
-      }
 
+  render() {
+    if(this.state.loading){
+      return (
+        <View style={styles.loading}>
+          <ActivityIndicator/>
+        </View>
+      )
+    } else {
+      return (
+       <ScrollView style={styles.container}>
+        <View>
+          <AuthLogo/>
+          <AuthForm
+            goNext={this.goNext}
+          />
+        </View>
+       </ScrollView>
+      );
+    }
     
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#1d428a',
-    padding: 50
+  container:{
+    flex:1,
+    backgroundColor:'#1d428a',
+    padding:50
   },
-  loading: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent:'center'
+  loading:{
+    flex:1,
+    backgroundColor:'#fff',
+    alignItems:'center',
+    justifyContent:'center'
   }
-})
+});
+
 
 function mapStateToProps(state){
   return {
@@ -90,5 +88,4 @@ function mapDispatchToProps(dispatch){
   return bindActionCreators({autoSignIn},dispatch);
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(SignIn);
-
+export default connect(mapStateToProps,mapDispatchToProps)(AuthComponent);
