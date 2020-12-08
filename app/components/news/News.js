@@ -3,7 +3,7 @@ import {
   View,
   Text
 } from 'react-native';
-export default class News extends Component {
+class News extends Component {
   render() {
 
     return (
@@ -13,3 +13,4 @@ export default class News extends Component {
     );
   }
 }
+export default News
