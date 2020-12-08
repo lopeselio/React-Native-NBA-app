@@ -1,3 +1,16 @@
-import { GameArticleComponent } from './GameArticleComponent';
+import React, { Component } from 'react';
+import {
+  View,
+  Text
+} from 'react-native';
+class GamesArticleComponent extends Component {
+  render() {
 
-export default GameArticleComponent
+    return (
+      <View>
+        <Text>Games component</Text>
+      </View>
+    );
+  }
+}
+export default GamesArticleComponent 
