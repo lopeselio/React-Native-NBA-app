@@ -2,9 +2,9 @@ import React from 'react';
 import { Platform } from "react-native";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import SignIn from './components/auth'
-import News from './components/news/News'
+import News from './components/news'
 import ArticleComponent from './components/news/article';
-import Games from "./components/games/Games";
+import Games from "./components/games";
 import GamesArticleComponent from './components/games/article';
 import Logo from './utils/logo'; 
 
