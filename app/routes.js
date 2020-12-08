@@ -1,18 +1,22 @@
 // import 'react-native-gesture-handler';
 import React from 'react'
-import { Platform } from 'react-native'
+import { AppRegistry, Platform } from 'react-native'
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 
 import { createStackNavigator } from 'react-navigation-stack'
 
 import SignIn from './components/auth'
-import News from './components/news'
-import Games from './components/games'
+import News from './components/news/News'
+import ArticleComponent from './components/news/ArticleComponent';
+import Games from "./components/games/Games";
+import GamesArticleComponent from "./components/games/GameArticleComponent";
+
+
 
 const AppStack = createBottomTabNavigator({
-    News: News,
-    Games: Games
+    News: NewsStack,
+    Games: GameStack
 }) 
 
 const AuthStack = createStackNavigator({
@@ -20,6 +24,17 @@ const AuthStack = createStackNavigator({
 },{
     headerMode: 'none'
 })
+
+const NewsStack = createStackNavigator({
+    News: News,
+    Article: ArticleComponent
+});
+
+const GameStack = createStackNavigator({
+    Games: Games,
+    Article: GamesArticleComponent
+});
+
 
 export const RootNavigator = () => {
     return createAppContainer(createSwitchNavigator({
